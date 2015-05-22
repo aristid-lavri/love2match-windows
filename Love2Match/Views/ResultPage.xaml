@@ -1,0 +1,105 @@
+﻿<phone:PhoneApplicationPage
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:es="clr-namespace:Microsoft.Expression.Shapes;assembly=Microsoft.Expression.Drawing"
+    x:Class="Love2Match.Views.ResultPage"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="True">
+
+
+
+
+    <!--
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar Mode="Default" Opacity="1.0" IsMenuEnabled="True" IsVisible="True">
+            <shell:ApplicationBarIconButton Click="AppBarSave_Click" IconUri="/Assets/Icons/save.png" Text="save" />
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
+    -->
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--TitlePanel contains the name of the application and page title-->
+        <StackPanel Grid.Row="0" Margin="12,17,0,28">
+            <TextBlock Text="{Binding Path=LocalizedResources.ApplicationTitle, Source={StaticResource LocalizedStrings}}"
+                       Style="{StaticResource PhoneTextNormalStyle}"/>
+        </StackPanel>
+
+        <!--ContentPanel - place additional content here-->
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+            <StackPanel>
+                <TextBlock x:Name="Lover1Text" 
+					Style="{StaticResource PhoneTextTitle2Style}"
+					TextAlignment="Center" 
+					Text="{Binding Couple[0].Fullname, Mode=TwoWay}"/>
+                <TextBlock Text="+" 
+					Style="{StaticResource PhoneTextTitle1Style}"
+					TextAlignment="Center"/>
+                <TextBlock x:Name="Lover2Text" 
+					Style="{StaticResource PhoneTextTitle2Style}"
+					TextAlignment="Center" 
+					Text="{Binding Couple[1].Fullname, Mode=TwoWay}"/>
+                <StackPanel x:Name="ShakePanel" 
+					Orientation="Vertical" Grid.Row="1">
+                    <TextBlock Text="Shake"
+						TextAlignment="Center"
+						Style="{StaticResource PhoneTextTitle1Style}"/>
+                    <TextBlock Text="To Add Love Bonus !"
+						TextAlignment="Center"/>
+                    <ProgressBar IsIndeterminate="True" />
+                </StackPanel>
+
+                <Grid x:Name="ScorePanel" Margin="0,50">
+
+
+                    <Grid Width="300" 
+                          Height="300">
+
+                        <Path x:Name="FilledHeartShape" 
+                            Stroke="White" StrokeThickness="3"
+                              Fill="Fuchsia"
+                        Data="M 150 300 L 30 180 
+                          A 100 100 0 0 1 150 25
+                          A 100 100 0 0 1 270 180
+                          L 150 300 "
+                          />
+                        <Rectangle x:Name="HeartMaskShape"
+                            VerticalAlignment="Top"
+                                   Width="300"
+                                   Height="300"
+                                   Fill="Black" />
+                        <Path x:Name="StrokedHeartShape"
+                            Stroke="White" StrokeThickness="3"
+                        Data="M 150 300 L 30 180 
+                          A 100 100 0 0 1 150 25
+                          A 100 100 0 0 1 270 180
+                          L 150 300 "
+                          />
+                        
+                    </Grid>
+                    <TextBlock x:Name="ScoreTextBlock" 
+						    Style="{StaticResource PhoneTextTitle1Style}"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Center"
+						    TextAlignment="Center"
+                            Text="90%"/>
+                </Grid>
+            </StackPanel>
+        </Grid>
+
+    </Grid>
+
+
+</phone:PhoneApplicationPage>
