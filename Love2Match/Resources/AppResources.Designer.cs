@@ -88,20 +88,11 @@ namespace Love2Match.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Love Match.
+        ///   Looks up a localized string similar to Love2Match.
         /// </summary>
         public static string ApplicationTitle {
             get {
                 return ResourceManager.GetString("ApplicationTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Convertion Mode.
-        /// </summary>
-        public static string ConvertionMode {
-            get {
-                return ResourceManager.GetString("ConvertionMode", resourceCulture);
             }
         }
         

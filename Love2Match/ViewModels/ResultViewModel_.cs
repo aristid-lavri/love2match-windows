@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading;
+using System.Threading.Tasks;
 
 using Love2Match.DataModel;
 using System.Collections.ObjectModel;
@@ -12,14 +12,7 @@ namespace Love2Match.ViewModels
     public class ResultViewModel
     {
 
-        private const string Alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        private const int HIGHEST_COMMON_MATCH = 100;
-        private const int HIGHEST_SUBTOTAL_MATCH = 90;
-        private const int LOWEST_COMMON_MATCH = 10;
-        private const int PERFECT_MATCH = 100;
-
-        
-
+        public static string Alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
         private ObservableCollection<Lover> _couple = new ObservableCollection<Lover>(
             new Lover[] { new Lover(), new Lover() });
@@ -68,14 +61,14 @@ namespace Love2Match.ViewModels
             int lover2XpNumber = ExpressionNumber(lover2.FullName);
             if (lover1XpNumber == lover2XpNumber)
             {
-                score = PERFECT_MATCH;
+                score = 100;
             }
             else
             {
                 // TODO find a more formal way to combine the numbers
                 //score = ((lover1XpNumber + lover2XpNumber) % 9) * 10; 
                 score = CoreNumberDigitsSum(lover1XpNumber + lover2XpNumber) * 10; 
-                score = (score > HIGHEST_SUBTOTAL_MATCH) ? HIGHEST_SUBTOTAL_MATCH : score;
+                score = (score > 100) ? 98 : score;
             }
 
             // Birthdate calculation
@@ -87,12 +80,12 @@ namespace Love2Match.ViewModels
 
                 if (lifePath1 == lifePath2)
                 {
-                    lifePathScore = PERFECT_MATCH;
+                    lifePathScore = 100;
                 }
                 else
                 {
                     lifePathScore = CoreNumberDigitsSum(lifePath1 + lifePath2) * 10;
-                    lifePathScore = (lifePathScore > HIGHEST_SUBTOTAL_MATCH) ? HIGHEST_SUBTOTAL_MATCH : lifePathScore;
+                    lifePathScore = (lifePathScore > 100) ? 98 : lifePathScore;
                 }
 
                 score = (score + lifePathScore) / 2;
@@ -104,6 +97,7 @@ namespace Love2Match.ViewModels
             {
                 if (lover1.Gender == lover2.Gender)
                 {
+                    if (score < 50)
                         score -= 10;
                 }
                 else
@@ -117,7 +111,7 @@ namespace Love2Match.ViewModels
             }
 
             int finalScore = score + bonus;
-            return ((finalScore > HIGHEST_COMMON_MATCH) ? HIGHEST_COMMON_MATCH : finalScore);
+            return ((finalScore > 100) ? 100 : finalScore);
         }
 
 

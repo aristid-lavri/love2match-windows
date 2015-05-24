@@ -9,24 +9,33 @@ using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 
 using Love2Match.ViewModels;
-using System.Threading;
-using System.Threading.Tasks;
+//using System.Threading;
+using System.Windows.Threading;
 
 namespace Love2Match.Views
 {
     public partial class ResultPage : PhoneApplicationPage
     {
 
-        ResultViewModel vm = new ResultViewModel();
+        private ResultViewModel vm = new ResultViewModel();
+        private DispatcherTimer ScoreAnimationTimer = new DispatcherTimer();
+
+        private double DisplayedScore;
+        private double HeartMaskInitHeight;
 
         public ResultPage()
         {
             InitializeComponent();
             DataContext = vm;
 
+            HeartMaskInitHeight = HeartMaskShape.Height;
+
+            ScoreAnimationTimer.Interval = TimeSpan.FromMilliseconds(5);
+            ScoreAnimationTimer.Tick += AnimateScore;
+            
             Loaded += (s, e) => 
-            { 
-                // TODO 
+            {
+                ScoreAnimationTimer.Start();
             };
         }
 
@@ -50,10 +59,9 @@ namespace Love2Match.Views
                     vm = new ResultViewModel(MainViewModel.Couple);
                     vm.CalculateLoveScore();
 
-
                     ShakePanel.Visibility = Visibility.Collapsed;
                     ScorePanel.Visibility = Visibility.Visible;
-                    ShowLoveScore();
+                    
                 }
             }
         }
@@ -69,19 +77,30 @@ namespace Love2Match.Views
             
             //ShakeGrid.Visibility = Visibility.Collapsed;
         }
-        
+       
 
 
-        private void ShowLoveScore()
+        void AnimateScore(object sender, EventArgs e)
         {
-            // TODO animate score display
-            ScoreTextBlock.Text = vm.LoveScore.ToString() + "%";
-            HeartMaskShape.Height = 300;
-            double height = HeartMaskShape.Height;
-            height = height - vm.LoveScore * (height / 100);
-            HeartMaskShape.Height = height;
+            if (DisplayedScore >= vm.LoveScore) // The score is calculated in OnNavigatedTo
+            {
+                ScoreAnimationTimer.Stop();
+            }
+            else 
+            {
+                HeartMaskShape.Height -= (HeartMaskInitHeight / 100); // remove one unit of the percentage of initial height
+                DisplayedScore++;
+                ScoreTextBlock.Text = DisplayedScore + "%";
+            }
+#if(DEBUG) 
+            System.Diagnostics.Debug.WriteLine("LoveScore='"+vm.LoveScore+"', "
+                +"Displayed Score='"+DisplayedScore+"', "
+                +"MaskHeight='"+HeartMaskShape.Height+"'");
 
+#endif
         }
+
+       
 
         private void AppBarSave_Click(object sender, EventArgs e)
         {

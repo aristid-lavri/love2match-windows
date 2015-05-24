@@ -126,7 +126,7 @@
     <comment>Controls the Language and ensures that the font for all elements in the RootFrame aligns with the app's language. Set to the language code of this resource file's language.</comment>
   </data>
   <data name="ApplicationTitle" xml:space="preserve">
-    <value>Love Match</value>
+    <value>Love2Match</value>
   </data>
   <data name="AppBarButtonText" xml:space="preserve">
     <value>add</value>
@@ -142,9 +142,6 @@
   </data>
   <data name="SettingsPageTitle" xml:space="preserve">
     <value>Settings</value>
-  </data>
-  <data name="ConvertionMode" xml:space="preserve">
-    <value>Convertion Mode</value>
   </data>
   <data name="IncludeNumber" xml:space="preserve">
     <value>Include Numbers</value>
