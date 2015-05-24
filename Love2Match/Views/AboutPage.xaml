@@ -60,8 +60,11 @@
                 <Button Content="Rate " Click="RateButton_Click"/>
             </StackPanel>
             
-            <TextBlock Grid.Row="1">
-                
+            <TextBlock Grid.Row="1" TextWrapping="Wrap">
+                Disclaimer: <LineBreak/>
+                This application is for entertainment purpose only.
+                So (un)fortunately, the results, provide here are not to be taken 
+                too seriously.
             </TextBlock>
         </Grid>
     </Grid>
