@@ -25,7 +25,10 @@
     </phone:PhoneApplicationPage.ApplicationBar>
     -->
     <!--LayoutRoot is the root grid where all page content is placed-->
-    <Grid x:Name="LayoutRoot" Background="Transparent">
+    <Grid x:Name="LayoutRoot">
+        <Grid.Background>
+            <ImageBrush ImageSource="/Assets/Images/Background.png" Stretch="UniformToFill"/>
+        </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
@@ -43,14 +46,15 @@
                 <TextBlock x:Name="Lover1Text" 
 					Style="{StaticResource PhoneTextTitle2Style}"
 					TextAlignment="Center" 
-					Text="{Binding Couple[0].Fullname, Mode=TwoWay}"/>
+					Text="{Binding Couple[0].Fullname}">
+                </TextBlock>
                 <TextBlock Text="+" 
 					Style="{StaticResource PhoneTextTitle1Style}"
 					TextAlignment="Center"/>
                 <TextBlock x:Name="Lover2Text" 
 					Style="{StaticResource PhoneTextTitle2Style}"
 					TextAlignment="Center" 
-					Text="{Binding Couple[1].Fullname, Mode=TwoWay}"/>
+					Text="{Binding Couple[1].Fullname}"/>
                 <StackPanel x:Name="ShakePanel" 
 					Orientation="Vertical" Grid.Row="1">
                     <TextBlock Text="Shake"
@@ -59,13 +63,34 @@
                     <TextBlock Text="To Add Love Bonus !"
 						TextAlignment="Center"/>
                     <ProgressBar IsIndeterminate="True" />
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <ProgressBar Grid.Column="0"
+                            IsIndeterminate="False" Height="3" 
+                                 Minimum="0" Maximum="10" Value="5"
+                                 Foreground="Fuchsia"  />
+                        <TextBlock Grid.Column="1" Text="+3"/>
+                    </Grid>
+
                 </StackPanel>
 
                 <Grid x:Name="ScorePanel" Margin="0,50">
+                    <Grid.Background>
+                        <LinearGradientBrush EndPoint="1,0.5" MappingMode="RelativeToBoundingBox" StartPoint="0,0.5">
+                            <GradientStop Color="#19000000"/>
+                            <GradientStop Color="#4C000000" Offset="1"/>
+                            <GradientStop Color="Black" Offset="0.15"/>
+                            <GradientStop Color="Black" Offset="0.85"/>
+                        </LinearGradientBrush>
+                    </Grid.Background>
 
 
                     <Grid Width="300" 
-                          Height="300">
+                          Height="300"
+                          Margin="10">
 
                         <Path x:Name="FilledHeartShape" 
                             Stroke="White" StrokeThickness="3"
@@ -87,7 +112,7 @@
                           A 100 100 0 0 1 270 180
                           L 150 300 "
                           />
-                        
+
                     </Grid>
                     <TextBlock x:Name="ScoreTextBlock" 
 						    Style="{StaticResource PhoneTextTitle1Style}"

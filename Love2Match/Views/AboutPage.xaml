@@ -11,10 +11,13 @@
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait"
     mc:Ignorable="d"
-    shell:SystemTray.IsVisible="True">
+    shell:SystemTray.IsVisible="True" >
 
     <!--LayoutRoot is the root grid where all page content is placed-->
-    <Grid x:Name="LayoutRoot" Background="Transparent">
+    <Grid x:Name="LayoutRoot" >
+        <Grid.Background>
+            <ImageBrush ImageSource="/Assets/Images/Background.png" Stretch="UniformToFill"/>
+        </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
@@ -57,11 +60,11 @@
             </StackPanel>
             <StackPanel Grid.Row="2" Visibility="Visible">
                 <TextBlock Text="If you enjoy please rate and share the application" HorizontalAlignment="Center"/>
-                <Button Content="Rate " Click="RateButton_Click"/>
+                <Button Content="Rate " Click="RateButton_Click" Background="{StaticResource PhoneBackgroundBrush}"/>
             </StackPanel>
             
             <TextBlock Grid.Row="1" TextWrapping="Wrap">
-                Disclaimer: <LineBreak/>
+                <Bold>Disclaimer:</Bold>  <LineBreak/>
                 This application is for entertainment purpose only.
                 So (un)fortunately, the results, provide here are not to be taken 
                 too seriously.
