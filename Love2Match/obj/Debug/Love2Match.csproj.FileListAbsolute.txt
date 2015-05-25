@@ -240,3 +240,4 @@ E:\users\godidier\Works\me\devel\love2match\Love2Match\Love2Match\Bin\Debug\vi-V
 E:\users\godidier\Works\me\devel\love2match\Love2Match\Love2Match\Bin\Debug\zh-CN\Microsoft.Phone.Controls.Toolkit.resources.dll
 E:\users\godidier\Works\me\devel\love2match\Love2Match\Love2Match\Bin\Debug\zh-TW\Microsoft.Phone.Controls.Toolkit.resources.dll
 E:\users\godidier\Works\me\devel\love2match\Love2Match\Love2Match\obj\Debug\XapCacheFile.xml
+E:\users\godidier\Works\me\devel\love2match\Love2Match\Love2Match\Bin\Debug\ShakeGestures.dll

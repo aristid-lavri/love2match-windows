@@ -6,5 +6,6 @@
     <AssemblyPart x:Name="Microsoft.Phone.Controls.Toolkit" Source="Microsoft.Phone.Controls.Toolkit.dll" />
     <AssemblyPart x:Name="Microsoft.Phone.Toolkit.Testing" Source="Microsoft.Phone.Toolkit.Testing.dll" />
     <AssemblyPart x:Name="Microsoft.VisualStudio.QualityTools.UnitTesting.Phone" Source="Microsoft.VisualStudio.QualityTools.UnitTesting.Phone.dll" />
+    <AssemblyPart x:Name="ShakeGestures" Source="ShakeGestures.dll" />
   </Deployment.Parts>
 </Deployment>

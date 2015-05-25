@@ -22,5 +22,7 @@ Processing file: E:\users\godidier\Works\me\devel\love2match\Love2Match\Love2Mat
 File E:\users\godidier\Works\me\devel\love2match\Love2Match\Love2Match\Bin\Debug\MDIL\Microsoft.VisualStudio.QualityTools.UnitTesting.Phone.dll is not in the compile filter. Skipping.
 Processing file: E:\users\godidier\Works\me\devel\love2match\Love2Match\Love2Match\Bin\Debug\MDIL\PhoneWord.dll
 File E:\users\godidier\Works\me\devel\love2match\Love2Match\Love2Match\Bin\Debug\MDIL\PhoneWord.dll is not in the compile filter. Skipping.
+Processing file: E:\users\godidier\Works\me\devel\love2match\Love2Match\Love2Match\Bin\Debug\MDIL\ShakeGestures.dll
+File E:\users\godidier\Works\me\devel\love2match\Love2Match\Love2Match\Bin\Debug\MDIL\ShakeGestures.dll is not in the compile filter. Skipping.
 Processing file: E:\users\godidier\Works\me\devel\love2match\Love2Match\Love2Match\Bin\Debug\MDIL\WMAppManifest.xml
 File E:\users\godidier\Works\me\devel\love2match\Love2Match\Love2Match\Bin\Debug\MDIL\WMAppManifest.xml is not in the compile filter. Skipping.

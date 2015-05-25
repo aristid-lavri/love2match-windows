@@ -62,17 +62,19 @@
 						Style="{StaticResource PhoneTextTitle1Style}"/>
                     <TextBlock Text="To Add Love Bonus !"
 						TextAlignment="Center"/>
-                    <ProgressBar IsIndeterminate="True" />
+                    <TextBlock x:Name="ShakeTimeTextBox" Text="3"
+						TextAlignment="Center"
+						Style="{StaticResource PhoneTextTitle1Style}"/>
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
-                        <ProgressBar Grid.Column="0"
-                            IsIndeterminate="False" Height="3" 
-                                 Minimum="0" Maximum="10" Value="5"
+                        <ProgressBar x:Name="ShakeBar" Grid.Column="0"
+                            IsIndeterminate="False" Height="5" 
+                                 Minimum="0" Maximum="10" Value="3"
                                  Foreground="Fuchsia"  />
-                        <TextBlock Grid.Column="1" Text="+3"/>
+                        <TextBlock x:Name="ShakeBonusTextBox" Grid.Column="1" Text="+3"/>
                     </Grid>
 
                 </StackPanel>
