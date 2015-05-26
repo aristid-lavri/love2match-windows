@@ -26,7 +26,7 @@ namespace Love2Match.Views
 
         private double DisplayedScore;
         private double HeartMaskInitHeight;
-        private byte ShakeBonus = 0;
+        private double ShakeBonus = 0;
         private const byte SHAKE_BONUS_COEF = 3; // A multiplier for shakebonus
         private const byte SHAKE_BONUS_MAX = 10;
         private TimeSpan ShakeTime = TimeSpan.FromSeconds(2);
@@ -72,9 +72,11 @@ namespace Love2Match.Views
                 if (ShakeBonus < SHAKE_BONUS_MAX * SHAKE_BONUS_COEF) 
                 {
                     ShakeBonus++;
-                    var bonus = ((double)ShakeBonus / (double)SHAKE_BONUS_COEF);
-                    ShakeBonusTextBox.Text = String.Format("+{0}",  Math.Round(bonus, 1));
-                    ShakeBar.Value = ShakeBonus;
+                    vm.ShakeBonus = Math.Round(
+                        ((double)ShakeBonus / (double)(SHAKE_BONUS_MAX * SHAKE_BONUS_COEF)),
+                        1); 
+                    ShakeBonusTextBox.Text = String.Format("+{0}",  vm.ShakeBonus);
+                    ShakeBar.Value = vm.ShakeBonus;
                     //VibrationDev.Vibrate(TimeSpan.FromSeconds(0.5));
                 }
             });
@@ -94,12 +96,13 @@ namespace Love2Match.Views
             {
                 ShakeTimer.Stop();
                 ShakeGesturesHelper.Instance.Active = false;
+                vm.AddShakeBonus();
                 ShowScore();
             }
             else 
             {
                 ShakeTime = TimeSpan.FromSeconds(ShakeTime.Seconds - 1);
-                ShakeTimeTextBox.Text = ShakeTime.Seconds.ToString();
+                ShakeTimeTextBox.Text = String.Format("{0}", ShakeTime.Seconds + 1);
             }
         }
 
@@ -142,7 +145,8 @@ namespace Love2Match.Views
             if (DisplayedScore >= vm.LoveScore) // The score is calculated in OnNavigatedTo
             {
                 ScoreAnimationTimer.Stop();
-                if (vm.LoveScore == 100)
+                ScoreTextBlock.Text = String.Format("{0}%", vm.LoveScore);
+                if (vm.LoveScore == 100)// change by constant
                 {
                     VibrationDev.Vibrate(TimeSpan.FromSeconds(1));
                 }
@@ -151,7 +155,7 @@ namespace Love2Match.Views
             {
                 HeartMaskShape.Height -= (HeartMaskInitHeight / 100); // remove one unit of the percentage of initial height
                 DisplayedScore++;
-                ScoreTextBlock.Text = DisplayedScore + "%";
+                ScoreTextBlock.Text = String.Format("{0}% ", DisplayedScore);
             }
 #if(DEBUG)
             System.Diagnostics.Debug.WriteLine("LoveScore='" + vm.LoveScore + "', "

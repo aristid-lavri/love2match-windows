@@ -30,9 +30,9 @@ namespace Love2Match.ViewModels
         }
 
 
-        public int ShakeBonus { get; set; }
+        public double ShakeBonus { get; set; }
 
-        public int LoveScore { get; set; }
+        public double LoveScore { get; set; }
 
         public bool IsSpecialScore { get; set; }
 
@@ -55,6 +55,11 @@ namespace Love2Match.ViewModels
                 LoveScore = GetNormalScore();
         }
 
+        public void AddShakeBonus()
+        {
+            double score = LoveScore + ShakeBonus;
+            LoveScore = (score > HIGHEST_COMMON_MATCH) ? HIGHEST_COMMON_MATCH : score;
+        }
 
         private int GetNormalScore()
         {
